@@ -1,0 +1,14 @@
+/* Assuming you have a file like ProductList.css */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between product cards */
+    padding: 20px;
+  }
+  
+  .product-list .product-card {
+    background-color: #fff;  /* Example styling */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

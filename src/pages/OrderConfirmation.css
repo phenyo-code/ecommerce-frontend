@@ -1,0 +1,25 @@
+/* src/pages/orderConfirmation.css */
+.order-confirmation {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .order-summary {
+    margin-top: 20px;
+  }
+  
+  .order-navigation {
+    margin-top: 30px;
+  }
+  
+  .order-navigation button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .order-navigation button:hover {
+    background-color: #f1f1f1;
+  }
+  

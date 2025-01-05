@@ -1,0 +1,156 @@
+/* Checkout Page Styles */
+.checkout-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-cart {
+    margin-bottom: 30px;
+  }
+  
+  .checkout-cart h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .cart-item img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .cart-item-details {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+  
+  .cart-item-details h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .cart-item-details p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .shipping-info {
+    margin-bottom: 30px;
+  }
+  
+  .shipping-info h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .shipping-info form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .shipping-info input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+  }
+  
+  .shipping-info label {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .checkout-total {
+    text-align: right;
+  }
+  
+  .checkout-total h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-total button {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .checkout-total button:hover {
+    background-color: #218838;
+  }
+  
+  .checkout-total a {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .checkout-total a:hover {
+    text-decoration: underline;
+  }
+  
+  .checkout-cart .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cart-item-details p {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-page {
+      padding: 15px;
+    }
+  
+    .cart-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .cart-item img {
+      width: 60px;
+    }
+  
+    .cart-item-details {
+      margin-left: 0;
+    }
+  
+    .shipping-info form {
+      gap: 12px;
+    }
+  
+    .checkout-total button {
+      width: 100%;
+    }
+  }
+  

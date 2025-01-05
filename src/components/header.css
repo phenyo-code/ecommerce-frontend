@@ -1,0 +1,268 @@
+/* Ensure the Montserrat font is applied */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* Logo Style */
+.logo-text {
+  font-family: 'Montserrat', sans-serif;  /* Using Montserrat font */
+  font-size: 22px;  /* Adjust size as needed */
+  font-weight: bolder;
+  background: linear-gradient(45deg, #ff6f61, #414141);  /* Gradient colors */
+  background-clip: text;
+  -webkit-background-clip: text;  /* Ensures the gradient applies to the text */
+  color: transparent;  /* Makes the text itself transparent so the gradient shows */
+  text-transform: uppercase;  /* Makes the logo text uppercase */
+  text-decoration: none;  /* Removes underline */
+  background-size: 400% 400%;  /* Expands the gradient to allow movement */
+  animation: gradientShift 3s ease infinite;  /* Animation for the gradient movement */
+}
+
+/* Animation for gradient movement */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 100%;
+  }
+  25% {
+    background-position: 60% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* Remove underline from all anchor tags */
+a {
+  text-decoration: none;
+}
+
+
+/* General Header Styles */
+.header {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+
+
+/* Top Row Styles */
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+
+.logo img {
+  height: 24px; /* Adjust the size as needed */
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 23px;  /* Increased gap for spacing */
+  justify-content: flex-end; /* Align icons to the right */
+}
+
+.header-icons .icon {
+  font-size: 24px;
+  color: #000;
+  position: relative;
+  text-decoration: none;
+}
+
+.header-icons .fa-search {
+  font-size: 24px;
+  color: #000;
+  position: relative;
+  text-decoration: none;
+}
+
+.header-icons .fa-x {
+  font-size: 24px;
+  font-weight: 200;
+  color: #b9b9b9;
+  position: relative;
+  text-decoration: none;
+}
+
+.header-icons .icon:hover {
+  color: #f57c00;
+}
+
+.header-icons .icon {
+  font-size: 24px;
+  color: #000;
+}
+
+.header-icons .icon:hover {
+  color: #f57c00;
+}
+
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: #f57c00;
+  color: white;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Individual Styling for Bars Icon */
+.header-icons .fa-bars {
+  font-size: 26px; /* Adjust the size of the bars icon */
+  color: #b9b9b9; /* Change the color */
+  cursor: pointer; /* Make the icon clickable */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+
+/* Remove hover background color */
+.category-tab:hover {
+  background-color: transparent; /* Ensure no background is applied */
+  color: #FF8801; /* Keep text color unchanged */
+}
+
+/* Remove hover background color */
+.filter-tab:hover {
+  background-color: transparent; /* Ensure no background is applied */
+  color: #FF8801; /* Keep text color unchanged */
+}
+
+/* Second Row: Categories */
+.header-categories-row {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 58px;  /* Adds space between the tabs */
+  border-bottom: 1px solid #ddd;
+  margin: 0;  /* Removes any default margin */
+  padding: 0; /* Ensures no extra white space */
+}
+
+/* Optionally, ensure that category tab items have no margin */
+.header-categories-row .category-tab {
+  margin: 0; /* Added to remove any default margin */
+}
+
+.category-tab {
+  padding: 8px 1px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  color: #000;
+  text-transform: uppercase;  /* Apply all caps */
+}
+
+
+/* Third Row: Filters */
+.header-filters-row {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 5px;
+  padding: 5px 0; /* Removed padding to reduce space */
+  background-color: #fff;
+  color: #fff;
+}
+
+.filter-tab {
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+  margin: 0; /* Added to remove any default margin */
+  text-transform: uppercase;  /* Apply all caps */
+}
+
+
+/* Side Menu Styles */
+.side-menu {
+  position: fixed;
+  top: 80px;  /* Adjust this value to position it below the second header row */
+  left: -100%; /* Initially positioned off-screen to the left */
+  width: 100%;
+  height: calc(100% - 80px);  /* Full height minus the height of the top header rows */
+  background-color: #333;
+  color: white;
+  transition: left 0.3s ease; /* Smooth sliding effect */
+  z-index: 1000; /* Ensure the side menu is above other content */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* When the menu is open */
+.side-menu.open {
+  left: 0; /* Slide the menu in from the left */
+}
+
+.side-menu .close-btn {
+  font-size: 30px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Side Menu Links */
+.side-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-menu li {
+  margin: 20px 0;
+}
+
+.side-menu li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+.side-menu li button.logout-btn {
+  background: none;
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+/* For mobile views */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+
+/* Close button for the side menu */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
