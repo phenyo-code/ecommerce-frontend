@@ -1,14 +1,74 @@
-/* Assuming you have a file like ProductList.css */
+/* Ensure the product list layout remains intact */
 .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between product cards */
-    padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  justify-items: start; /* Align content to the start */
+  align-items: start; /* Avoid centering issues */
+}
+
+.list-header {
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+
+
+/* Ensure grid container uses space effectively on medium screens */
+@media (min-width: 250px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); /* Two products per row on medium screens */
   }
-  
-  .product-list .product-card {
-    background-color: #fff;  /* Example styling */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* For larger screens, 3 products per row */
+@media (min-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr); /* Three products per row */
   }
-  
+}
+
+
+/* Make sure products container takes full width and align items */
+.products {
+  display: grid; /* Grid layout for product items */
+  grid-template-columns: 1fr; /* Default layout for smaller screens */
+  gap: 3px; /* Space between items */
+  width: 100%; /* Ensure it takes up full available width */
+  padding: 3px; /* Remove any padding */
+}
+
+/* Specific styles for product name and price */
+.product-name {
+  font-size: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.product-price {
+  font-size: 1px;
+  color: #555;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 250px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* Two products per row on medium screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* Two products per row on medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr); /* Three products per row on large screens */
+  }
+}

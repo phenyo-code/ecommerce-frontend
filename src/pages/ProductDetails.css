@@ -1,43 +1,189 @@
-/* src/pages/ProductDetails.css */
-.product-details {
-    text-align: center;
-    padding: 20px;
+  .product-page {
+    margin-top: 62px;
+  }
+
+  .prod-image-wrapper {
+    position: relative;
+    margin-bottom: -50px; /* Space between image and product details */
   }
   
-  .product-image {
+  .prod-image {
     width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
+    height: 100%; /* Make image fill the wrapper */
+    object-fit: cover;
+  }
+
+
+  .prod-details {
+    padding: 13px;
+    margin-top: 13px;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Small gap between the price items */
+    margin-top: 15px;
   }
   
-  .product-name {
-    font-size: 2em;
-    margin-bottom: 20px;
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff7700; /* Red color for the discount */
+  }
+
+  .discount-percent {
+    color: #ff8012; /* Orange color for the discount */
+    font-size: 0.7rem;
+    font-weight: 800;
+    background-color: #ffdab9;; /* Light orange background */
+    padding: 2px 4px; /* Add padding to increase the background size */
+    margin-left: 7px;
+    padding-left: 4px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0;
   }
   
-  .product-description {
-    font-size: 1.2em;
-    color: #666;
+  .discount-text {
+    display: inline-block;
+    color: #ff7700; /* Orange color for the discount */
+    font-size: 0.6rem;
+    font-weight: 500;
+    padding: 3px 8px; /* Match the padding of .discount-percent */
+    border-radius: 3px;
+    overflow: hidden;
   }
   
-  .product-price {
-    font-size: 1.5em;
-    color: #333;
-    margin-bottom: 20px;
+  .size-text {
+    margin-top: 0;
+    font-weight: 500;
   }
-  
-  button {
-    background-color: #ff9900;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
+
+  .original-price {
+    text-decoration: line-through;
+    font-size: 0.8rem;
+    color: #7f8c8d; /* Gray for original price */
+  }
+
+  .prod-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    margin-top: 0;
+    margin: 0;
+    left: 0;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;    /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds '...' at the end if text overflows */
+    width: 100%; /* Ensures the element takes up available space */
+  }  
+
+  .size-selector {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
   }
   
-  button:hover {
-    background-color: #ff7700;
+  
+  .size-selector label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 13px;
   }
+  
+  .size-text {
+    margin-left: 13px;
+  }
+
+  .size-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 1px;
+    margin-bottom: 10px;
+    margin-left: 13px;
+  }
+  
+  .size-option {
+    padding: 5px 21px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .size-option:hover {
+    border-color: #ff7700;
+  }
+  
+  .size-option.selected {
+    background-color: #ff7700;
+    color: white;
+    border-color: #ff7700;
+  }
+  
+  .add-button {
+    display: flex;
+    align-items: center; /* Align items on the same row */
+    margin-bottom: 13px;
+    gap: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  }
+  
+  .add-to-cart {
+    background-color: black; /* Button background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Adjust padding */
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px; /* Font size for button */
+    margin-right: 10px; /* Space between button and heart icon */
+  }
+  
+  .wish-list {
+    font-size: 35px; /* Heart icon size */
+    font-weight: 100;
+    color: rgb(117, 117, 117); /* Color of the heart icon */
+    margin-left: 15px;
+    cursor: pointer; /* Add pointer cursor for interactivity */
+  }
+
+  .wish-list.added {
+    color: rgb(0, 0, 0); /* Color when the product is in the wishlist */
+  }
+  
+  .wish-list:hover {
+    color: #000000; /* Hover effect */
+  }
+  
+
+  .cart-dot {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6600; /* Green color */
+    border-radius: 50%;
+    animation: moveUp 1s ease-out forwards;
+    z-index: 10;
+  }
+  
+  @keyframes moveUp {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-150px);
+      opacity: 0;
+    }
+  }
+  
+
   

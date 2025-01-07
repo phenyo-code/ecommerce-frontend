@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SearchHeader from '../components/SearchHeader';
 import './Settings.css';
 
 const Settings = () => {
@@ -32,6 +33,7 @@ const Settings = () => {
 
   return (
     <div className="settings-container">
+      <SearchHeader />
       <h1>Settings</h1>
 
       <form onSubmit={handleSubmit}>

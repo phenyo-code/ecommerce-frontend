@@ -1,0 +1,40 @@
+.wishlist-page {
+    margin-top: 70px;
+    margin-bottom: 30px;
+  }
+
+  .wish-header {
+    margin-left: 15px;
+  }
+  
+  .wishlist-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    justify-items: start; /* Align content to the start */
+    align-items: start; /* Avoid centering issues */
+    flex: 1;
+  }
+
+  @media (min-width: 250px) {
+    .wishlist-items {
+      grid-template-columns: repeat(2, 1fr); /* Two products per row on medium screens */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .wishlist-items {
+      grid-template-columns: repeat(2, 1fr); /* Two products per row on medium screens */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .wishlist-items {
+      grid-template-columns: repeat(3, 1fr); /* Three products per row on large screens */
+    }
+  }
+
+  

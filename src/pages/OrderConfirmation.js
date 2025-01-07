@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './OrderConfirmation.css';
+import SearchHeader from '../components/SearchHeader';
 
 function OrderConfirmation() {
   // Optionally, you can retrieve order details from localStorage or backend API if needed
@@ -9,6 +10,7 @@ function OrderConfirmation() {
 
   return (
     <div className="order-confirmation">
+      <SearchHeader placeholder="Search for products..." />
       <h2>Thank You for Your Order!</h2>
       <p>Your order has been successfully placed. Here are the details:</p>
       <div className="order-summary">

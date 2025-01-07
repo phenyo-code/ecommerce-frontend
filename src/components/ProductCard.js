@@ -1,28 +1,85 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/actions'; // Correct import path
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiShoppingCart } from 'react-icons/fi';
 import './ProductCard.css';
 
 function ProductCard({ product }) {
-  const dispatch = useDispatch();
+  const [showAnimation, setShowAnimation] = useState(false);
 
-  const handleAddToCart = () => {
-    dispatch(addToCart(product)); // Dispatch the action to add product to the cart
+  const calculateDiscount = () => {
+    if (product.originalPrice && product.price) {
+      return Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+    }
+    return 0;
   };
 
+  const addToCart = (event) => {
+    // Prevent navigation when clicking the cart button
+    event.preventDefault();
+    event.stopPropagation();
+
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingProduct = existingCart.find((item) => item.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      existingProduct = { ...product, quantity: 1 };
+      existingCart.push(existingProduct);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(existingCart));
+
+    // Trigger the animation
+    setShowAnimation(true);
+    setTimeout(() => setShowAnimation(false), 1000); // Hide animation after 1 second
+  };
+
+  const discount = calculateDiscount();
+
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} className="product-image" />
-      <h3 className="product-name">{product.name}</h3>
-      <p className="product-price">${product.price}</p>
-      <button onClick={handleAddToCart} className="product-button">Add to Cart</button>
-      {/* Link to Product Details page */}
-      <Link to={`/product/${product.id}`} className="product-details-link">
-        View Details
-      </Link>
-    </div>
+    <Link to={`/product/${product.id}`} className="product-card">
+      <div className="product-image-wrapper">
+        <img src={product.image} alt={product.name} className="product-image" />
+        <div
+          className="discount-badge"
+          onClick={(e) => {
+            e.preventDefault(); // Prevent navigation for the cart button
+            e.stopPropagation();
+          }}
+        >
+          <FiShoppingCart onClick={addToCart} className="cart-button" />
+        </div>
+        {showAnimation && <div className="cart-animation"></div>}
+      </div>
+      <div className="product-details">
+        <div className="prod-name">
+          <p className="product-details-name">{product.name}</p>
+        </div>
+        <div className="product-price-container">
+          <p className="product-details-price">R{product.price.toFixed(2)}</p>
+          {product.originalPrice && (
+            <p className="product-original-price">R{product.originalPrice.toFixed(2)}</p>
+          )}
+        </div>
+        <div className="sale">
+          {discount > 0 && <p className="up-to">{discount}% OFF FLARE wide</p>}
+        </div>
+      </div>
+    </Link>
   );
 }
 
 export default ProductCard;
+
+
+
+
+
+
+
+
+
+
+
+

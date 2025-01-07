@@ -38,11 +38,12 @@ const Header = () => {
 
   useEffect(() => {
     const filters = {
-      men: ['New', 'Sale', 'T-Shirts', 'Jeans', 'Jackets', 'Shoes'],
-      women: ['New', 'Sale', 'Dresses', 'Tops', 'Jeans', 'Jackets'],
-      brands: ['New', 'Sale', 'Nike', 'Adidas', 'Puma', 'Reebok'],
-      home: ['Furniture', 'New', 'Sale', 'Decor', 'Lighting', 'Kitchen'],
-      jewellery: ['Necklaces', 'Bracelets', 'New', 'Sale', 'Rings', 'Earrings'],
+      men: ['T-Shirts', 'Jeans', 'Jackets', 'Shoes'],
+      women: ['Dresses', 'Tops', 'Jeans', 'Jackets'],
+      forYou: ['New', 'Sale', 'T-Shirts', 'Jeans', 'Tops', 'Pants', 'Hoodies', 'Accessories'],
+      brands: ['Nike', 'Adidas', 'Puma', 'Reebok'],
+      home: ['Furniture', 'Decor', 'Lighting', 'Kitchen'],
+      jewellery: ['Necklaces', 'Bracelets', 'Rings', 'Earrings'],
     };
 
     if (filters[activeCategory]) {
@@ -83,7 +84,10 @@ const Header = () => {
   const logout = () => {
     localStorage.removeItem('userToken');
     sessionStorage.removeItem('userToken');
-    setMenuOpen(!isMenuOpen);
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen(!isSearchOpen);
   };
 
   return (
@@ -97,8 +101,11 @@ const Header = () => {
         </div>
         <div className="header-icons">
           {/* Search Icon */}
-          <Link to="/search">
-            <FiSearch className="icon search-icon" />
+          <FiSearch onClick={toggleSearch} className="icon search-icon" />
+
+          {/* Wishlist Icon */}
+          <Link to="/wishlist" className="icon">
+            <FiHeart />
           </Link>
 
           <Link to="/cart" className="icon cart-icon-wrapper">
@@ -115,48 +122,52 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Render the Search component if isSearchOpen is true */}
       {isSearchOpen ? (
-        <Search closeSearch={() => setSearchOpen(false)} />
+        <Search closeSearch={toggleSearch} />
       ) : (
         <>
-<div className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
-  <ul>
-    <li>
-      <Link to="/profile" onClick={toggleMenu}>
-        Profile <i className="fa-solid fa-chevron-right"></i>
-      </Link>
-    </li>
-    <li>
-      <Link to="/settings" onClick={toggleMenu}>
-        Settings <i className="fa-solid fa-chevron-right"></i>
-      </Link>
-    </li>
-    <li>
-      <Link to="/cart" onClick={toggleMenu}>
-        Cart ({cartCount}) <i className="fa-solid fa-chevron-right"></i>
-      </Link>
-    </li>
-    <li>
-      <Link to="/wishlist" onClick={toggleMenu}> {/* Add Wishlist link */}
-        Wishlist <i className="fa-solid fa-chevron-right"></i>
-      </Link>
-    </li>
-    <li>
-      <Link to="/help" onClick={toggleMenu}>
-        Help <i className="fa-solid fa-chevron-right"></i>
-      </Link>
-    </li>
-    <li>
-      <Link to="/login" onClick={logout}>
-        <button className="logout-btn" onClick={logout}>
-          Logout
-        </button>
-      </Link>
-    </li>
-  </ul>
-  <Footer />
-</div>
-
+          {/* Side Menu */}
+          <div className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
+            <ul>
+              <li>
+                <Link to="/profile" onClick={toggleMenu}>
+                  Profile <i className="fa-solid fa-chevron-right"></i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/settings" onClick={toggleMenu}>
+                  Settings <i className="fa-solid fa-chevron-right"></i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/orders" onClick={toggleMenu}>
+                  Orders <i className="fa-solid fa-chevron-right"></i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/account" onClick={toggleMenu}>
+                  Account <i className="fa-solid fa-chevron-right"></i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/cart" onClick={toggleMenu}>
+                  Cart ({cartCount}) <i className="fa-solid fa-chevron-right"></i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/help" onClick={toggleMenu}>
+                  Help <i className="fa-solid fa-chevron-right"></i>
+                </Link>
+              </li>
+              <li>
+                <button className="logout-btn" onClick={logout}>
+                  Logout
+                </button>
+              </li>
+            </ul>
+            <Footer />
+          </div>
 
           {/* Second Row - Categories */}
           {!isCartPage && (
@@ -201,16 +212,9 @@ const Header = () => {
                 <button className="filter-tab">Loading Filters...</button>
               ) : activeFilterTabs && activeFilterTabs.length > 0 ? (
                 activeFilterTabs.map((filter, index) => (
-                  <Link
-                    key={index}
-                    to={{
-                      pathname: '/filter',
-                      search: `?filter=${filter}&category=${activeCategory}`,
-                    }}
-                    className="filter-tab"
-                  >
+                  <button key={index} className="filter-tab">
                     {filter}
-                  </Link>
+                  </button>
                 ))
               ) : (
                 <button className="filter-tab">No Filters Available</button>
@@ -227,33 +231,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,7 @@
 // src/pages/Checkout.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SearchHeader from '../components/SearchHeader';
 import './CheckOut.css';
 
 function Checkout() {
@@ -40,6 +41,7 @@ function Checkout() {
 
   return (
     <div className="checkout-page">
+      <SearchHeader placeholder="Search for products..." />
       <h2>Checkout</h2>
 
       <div className="shipping-info">
@@ -88,9 +90,7 @@ function Checkout() {
         <button onClick={handleCheckout}>Proceed to Payment</button>
       </div>
 
-      <div className="cart-link">
-        <Link to="/cart">Back to Cart</Link>
-      </div>
+      
     </div>
   );
 }

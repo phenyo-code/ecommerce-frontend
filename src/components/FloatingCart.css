@@ -1,0 +1,27 @@
+.floating-cart {
+    position: fixed;
+    bottom: 30px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    z-index: 999; /* Ensure the icon stays on top of other elements */
+}
+
+.cart-cart {
+    font-size: 1.1rem; /* Size of the cart icon */
+    color: #ffffff; /* Cart icon color */
+    padding: 8px; /* Space around the icon */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.float {
+    background-color: #ff7700; /* Background color of the cart icon */
+    border-radius: 50%;
+    padding: 12px; /* Space around the icon */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds shadow */
+}
+
+
+
+
+
+  

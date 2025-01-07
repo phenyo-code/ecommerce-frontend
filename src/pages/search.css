@@ -1,0 +1,33 @@
+/* Header with Back Icon and Search Input */
+
+
+body.menu-open {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent body scrolling when the menu is open */
+}
+
+.search-title {
+  flex: 1; /* Allow the product list to take remaining space */
+  margin-top: 0;
+}
+
+.search-page {
+  margin-top: 60px;
+  margin-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  justify-items: start; /* Align content to the start */
+  align-items: start; /* Avoid centering issues */
+}
+
+.top {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 10px;
+}
+

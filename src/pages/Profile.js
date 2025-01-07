@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SearchHeader from '../components/SearchHeader';
 import './Profile.css';
 
 const Profile = () => {
@@ -22,6 +23,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
+      <SearchHeader />
       {/* Profile Section */}
       <section className="profile-section">
         <h2>Profile Information</h2>

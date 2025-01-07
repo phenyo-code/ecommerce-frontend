@@ -7,27 +7,20 @@ body.menu-open {
   overflow: hidden; /* Prevent body scrolling when the menu is open */
 }
 
-/* Prevent scrolling when the side menu is open */
-.no-scroll {
-  overflow: hidden;
-}
-
-
 /* Logo Style */
 .logo-text {
   font-family: 'Montserrat', sans-serif;  /* Using Montserrat font */
   font-size: 22px;  /* Adjust size as needed */
   font-weight: bolder;
   letter-spacing: 3px;
-  background: linear-gradient(20deg, #000000, #ff6347);  /* Gradient colors */
+  background: linear-gradient(45deg, #ff6f61, #414141);  /* Gradient colors */
   background-clip: text;
   -webkit-background-clip: text;  /* Ensures the gradient applies to the text */
   color: transparent;  /* Makes the text itself transparent so the gradient shows */
   text-transform: uppercase;  /* Makes the logo text uppercase */
   text-decoration: none;  /* Removes underline */
   background-size: 400% 400%;  /* Expands the gradient to allow movement */
-  animation: gradientShift 4s ease infinite;  /* Animation for the gradient movement */
-  margin-left: 20px;
+  animation: gradientShift 3s ease infinite;  /* Animation for the gradient movement */
 }
 
 /* Animation for gradient movement */
@@ -41,18 +34,17 @@ body.menu-open {
   50% {
     background-position: 100% 50%;
   }
-  75% {
-    background-position: 50% 50%;
-  }
   100% {
     background-position: 0% 50%;
   }
 }
 
+
 /* Remove underline from all anchor tags */
 a {
   text-decoration: none;
 }
+
 
 /* General Header Styles */
 .header {
@@ -62,10 +54,12 @@ a {
   flex-direction: column;
   align-items: stretch;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0; /* Removed all padding */
+  padding: 0 10px;
   box-sizing: border-box;
-  margin-right: 20px;
+  margin: 0; /* Ensure no margin here */
 }
+
+
 
 /* Top Row Styles */
 .header-top-row {
@@ -73,8 +67,9 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  margin: 0; /* Ensure no margin */
+  margin: 0; /* Ensure no margin here */
 }
+
 
 .logo img {
   height: 24px; /* Adjust the size as needed */
@@ -85,7 +80,6 @@ a {
   align-items: center;
   gap: 23px;  /* Increased gap for spacing */
   justify-content: flex-end; /* Align icons to the right */
-  margin-right: 20px;
 }
 
 .header-icons .fa-shopping-cart{
@@ -120,6 +114,7 @@ a {
   stroke: #ff6347; /* Default color for stroke-based icons */
 }
 
+
 .header-icons .icon:hover {
   color: #f57c00;
 }
@@ -142,7 +137,7 @@ a {
 }
 
 .search-icon {
-  font-size: 22px; /* Make the icon larger */
+  font-size: 24px; /* Make the icon larger */
   line-height: 50px; /* Adjust line height for spacing */
   stroke-width: 1.5; /* Make the strokes bolder */
   height: 30px; /* Control the height of the icon */
@@ -165,10 +160,12 @@ a {
   width: auto; /* Maintain aspect ratio */
 }
 
+
 .menu-icon:hover {
   color: #ff6347; /* Hover effect */
   transform: scale(1.1); /* Slight scaling on hover */
 }
+
 
 .header-top-row .icon {
   font-size: 25px; /* Adjust size */
@@ -220,6 +217,7 @@ a {
   transition: color 0.3s ease; /* Smooth transition for color change */
 }
 
+
 /* Remove hover background color */
 .category-tab:hover {
   background-color: transparent; /* Ensure no background is applied */
@@ -239,7 +237,7 @@ a {
   white-space: nowrap;
   gap: 58px;  /* Adds space between the tabs */
   border-bottom: 1px solid #ddd;
-  margin-left: 20px;
+  margin: 0;  /* Removes any default margin */
   padding: 0; /* Ensures no extra white space */
 }
 
@@ -270,6 +268,7 @@ a {
   opacity: 1;
 }
 
+
 .category-tab {
   padding: 8px 1px;
   background: none;
@@ -282,18 +281,17 @@ a {
   text-transform: uppercase;  /* Apply all caps */
 }
 
+
 /* Third Row: Filters */
 .header-filters-row {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  gap: 20px;
+  gap: 5px;
   padding: 5px 0; /* Removed padding to reduce space */
   background-color: #fff;
   color: #fff;
   margin: 0;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent the items from wrapping to the next line */
 }
 
 .filter-tab {
@@ -303,18 +301,19 @@ a {
   font-size: 10px;
   font-weight: bold;
   cursor: pointer;
-  color: #9c9c9c;
+  color: #000000;
   margin: 0; /* Added to remove any default margin */
   text-transform: uppercase;  /* Apply all caps */
-  margin-left: 13px;
 }
+
+
 /* Side Menu Styles */
 .side-menu {
   position: fixed;
-  top: 46px;  /* Adjust this value to position it below the second header row */
+  top: 81px;  /* Adjust this value to position it below the second header row */
   left: -100%; /* Initially positioned off-screen to the left */
   width: 100%;
-  height: calc(100% - 43px);  /* Full height minus the height of the top header rows */
+  height: calc(100% - 80px);  /* Full height minus the height of the top header rows */
   background-color: #ffffff; /* Changed to white */
   color: #000000; /* Changed to black */
   transition: left 0.3s ease; /* Smooth sliding effect */
@@ -349,7 +348,7 @@ a {
 .side-menu button {
   text-decoration: none;
   color: #000000; /* Changed text color to black */
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   display: block;
   padding: 10px;
@@ -381,22 +380,18 @@ a {
 
 /* Side Menu Links */
 .side-menu ul {
-  display: flex;
-  flex-direction: column; /* Stack the items vertically */
+  list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .side-menu li {
   margin: 20px 0;
-  flex-grow: 1;  /* This allows the span to take up available space */
 }
 
 .side-menu li  {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 18px;
-  flex-grow: 1;  /* This allows the span to take up available space */
 }
 
 /* Side Menu List Item Style */
@@ -409,7 +404,6 @@ a {
   padding-bottom: 10px;
   border-bottom: 1px solid #e0e0e0; /* Horizontal line after each item */
   position: relative; /* Needed for the absolute positioning of the arrow */
-  flex-grow: 1;  /* This allows the span to take up available space */
 }
 
 /* Style for the forward arrow icon */
@@ -439,7 +433,6 @@ a {
 
 .side-menu a {
   color: #000000; /* Specific to side menu */
-    flex-grow: 1;  /* This allows the span to take up available space */
 }
 
 .footer a {
@@ -497,9 +490,4 @@ a {
   margin: 0 !important;
   padding: 0 !important;
 
-}
-/* Footer Styling */
-footer {
-  margin: 0;  /* Removed any margin */
-  padding: 20px;
 }

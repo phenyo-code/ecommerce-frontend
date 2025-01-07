@@ -1,47 +1,45 @@
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f5f5f5;
-    padding: 3rem 2rem;
-    color: white;
-    border-bottom: 1px solid #ddd;
-    margin-top: 0;
-  }
-  
-  .hero-content {
-    max-width: 600px;
-  }
-  
-  .hero-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-description {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-btn {
-    padding: 0.75rem 1.5rem;
-    background-color: #f39c12;
-    color: white;
-    text-decoration: none;
-    font-size: 1.25rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .hero-btn:hover {
-    background-color: #e67e22;
-  }
-  
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    max-width: 800px;
-    border-radius: 10px;
-  }
-  
+  background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with a placeholder image URL */
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+
+.hero-content {
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 50px 30px; /* Keep padding to space out the content */
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin: 0; /* Remove margin */
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin: 10px 0 70px; /* Keep the margin for spacing */
+}
+
+.shop-now-btn {
+  background-color: #ff6600;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+
+.shop-now-btn:hover {
+  background-color: #ff6600;
+  color: #ffffff;
+}

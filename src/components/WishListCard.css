@@ -1,0 +1,145 @@
+.wish-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 190px;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    justify-content: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow added here */
+    height: 200px;
+  }
+  
+  .wish-image-wrapper {
+    position: relative;
+    margin-bottom: -50px; /* Space between image and product details */
+    height: 200px;
+  }
+  
+  .wish-image {
+    width: 100%;
+    height: 100%; /* Make image fill the wrapper */
+    object-fit: cover;
+  }
+  
+  .wish-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #ffffff;
+    padding: 2px 5px;
+  }
+  
+  .wish-details {
+    padding: 10px;
+    margin-top: 44px;  /* Adjust the margin as needed to account for the fixed header height */
+  }
+  
+  
+  .wish-price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin: 0;
+  }
+  
+  .wish-name {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin: 0;
+  }
+  
+  .wish-sale {
+    display: flex;
+    margin: 0;
+    margin-top: 0;
+  }
+  
+  .up-wish {
+    font-size: 0.7rem;
+    color: #ff6600;
+    text-decoration: none;
+    margin: 0;
+    left: 0;
+  }
+  
+  
+  .wish-original-price {
+    font-size: 0.8rem;
+    color: #8d8d8d;
+    text-decoration: line-through;
+  }
+  
+  .wish-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Increased margin for better spacing */
+    gap: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .delete-button {
+    font-size: 18px;
+    color: #ff6600;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  
+  
+  .wish-details-name {
+    font-size: 0.9rem;
+    color: #000000;
+    text-decoration: none;
+    margin: 0;
+    left: 0;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;    /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds '...' at the end if text overflows */
+    width: 100%; /* Ensures the element takes up available space */
+  }
+  
+  
+  .wish-details-price {
+    font-size: 1.1rem;
+    color: #ff6600;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .wish-details-link:hover {
+    text-decoration: underline;
+  }
+ 
+  
+  /* Adjust for smaller screens */
+  @media (max-width: 250px) {
+    .wish-name {
+      font-size: 10px;
+    }
+  
+    .wish-price {
+      font-size: 12px;
+    }
+  
+    .wish-actions {
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-start;
+      margin-bottom: 0;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .delete-button, .wish-details-link {
+      font-size: 0.75rem;
+    }
+  }

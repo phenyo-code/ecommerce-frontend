@@ -1,0 +1,78 @@
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 0;  /* Removed gap for no space between elements */
+    background-color: #f8f8f8; /* Light background */
+    border-bottom: 1px solid #ddd;  /* Added bottom border */
+    position: fixed;  /* Fixed position at the top */
+    padding: 0; /* Removed padding to reduce space */
+    top: 0;  /* Position at the very top */
+    left: 0;  /* Align to the left edge of the viewport */
+    width: 100%;  /* Ensure the header spans the full width of the screen */
+    z-index: 1000;  /* Make sure the header stays on top of other content */
+    box-sizing: content-box;
+  }
+  
+
+  
+  
+  .back-icon {
+    font-size: 45px;
+    color: #333;
+    text-decoration: none;
+    margin-left: 10px;  /* Added margin to push the back icon to the right */
+    margin-bottom: 0%;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    box-shadow: none; /* Ensure no shadow */
+    border: none; /* Ensure no border */
+    background-color: #f8f8f8; /* Light background */
+  }
+  
+  .search-input {
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+    margin: 0; /* Remove any margin */
+    padding: 6px; /* Add padding for better usability */
+    border: none; /* Remove any border */
+    outline: none; /* Remove any outline */
+    box-shadow: none; /* Remove box-shadow */
+    margin-bottom: 8px; /* Add a little space below the input */
+    background-color: #f8f8f8; /* Light background */
+  }
+
+  
+  .search-header {
+    display: flex;
+    align-items: center;
+    padding: 0; /* Ensure no padding around the header */
+    margin: 0; /* Ensure no margin around the header */
+    gap: 8px; /* Control spacing between elements */
+  }
+  
+  
+  .search-icons {
+    background-color: #000000;  /* Black background for the search icon */
+    border: none;
+    cursor: pointer;
+    padding: 12px;  /* Adjust padding to ensure a perfect circle */
+    color: #ffffff;
+    font-size: 23px;
+    border-radius: 50%;  /* Round background for the search icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;  /* Set width to create a consistent size */
+    height: 17px;  /* Set height to make it a perfect circle */
+    margin-left: 0px; /* Adjust to reduce space between icon and input */
+    margin-right: 15px;  /* Added margin to push the back icon to the right */
+    margin-bottom: 0%;
+  }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SearchHeader from '../components/SearchHeader';
 import './cart.css';
 
 function Cart() {
@@ -54,9 +55,10 @@ function Cart() {
 
   return (
     <div className="cart-page">
+      <SearchHeader placeholder="Search for products..." />
       <h2>Your Cart</h2>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty. <Link to="/">Go back to shop</Link></p>
+        <p>Your cart is empty. <Link to="/">Shop Now</Link></p>
       ) : (
         <div className="cart-items">
           {cartItems.map((item) => (
@@ -76,15 +78,18 @@ function Cart() {
           ))}
         </div>
       )}
-      <div className="cart-total">
-        <h3>Total: ${getTotalPrice()}</h3>
-        <Link to="/checkout">
-  <button>Proceed to Checkout</button>
-</Link>
-      </div>
+      {cartItems.length > 0 && (
+        <div className="cart-total">
+          <h3>Total: ${getTotalPrice()}</h3>
+          <Link to="/checkout">
+            <button>Proceed to Checkout</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
 
 export default Cart;
+
 

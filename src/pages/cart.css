@@ -1,6 +1,7 @@
 /* src/App.css */
 .cart-page {
     padding: 20px;
+    margin-top: 40px;  /* Adjust the margin as needed to account for the fixed header height */
   }
   
   .cart-items {

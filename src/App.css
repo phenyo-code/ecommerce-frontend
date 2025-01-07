@@ -36,3 +36,47 @@
     transform: rotate(360deg);
   }
 }
+
+/* App.css or styles.css */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for smaller screens */
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  gap: 20px;
+}
+
+.header {
+  grid-area: header;
+}
+
+.main-content {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 200px 1fr; /* Sidebar + content */
+    grid-template-areas:
+      "header header"
+      "side main"
+      "footer footer";
+  }
+
+  .side-menu {
+    grid-area: side;
+  }
+
+  .main-content {
+    grid-area: main;
+  }
+}
