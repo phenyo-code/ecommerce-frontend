@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Header from './components/header';
 import Footer from './components/footer';
 import ProductList from './components/ProductList';
+import AllProductsList from './components/AllProductList';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Checkout from './pages/CheckOut';
@@ -24,8 +25,20 @@ const AppWrapper = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768); // Desktop detection
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768); // Update desktop status on resize
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const onCategoryChange = (category) => {
     console.log('Category changed to:', category);
@@ -43,11 +56,13 @@ const AppWrapper = () => {
   return (
     <div className="App">
       {location.pathname === '/' && (
-        <Header
-          onCategoryChange={onCategoryChange}
-          toggleMenu={toggleMenu}
-          toggleSearch={toggleSearch}
-        />
+        <>
+          <Header
+            onCategoryChange={onCategoryChange}
+            toggleMenu={toggleMenu}
+            toggleSearch={toggleSearch}
+          />
+        </>
       )}
 
       <div className={`search ${isSearchOpen ? 'open' : ''}`}>
@@ -69,7 +84,7 @@ const AppWrapper = () => {
       </div>
 
       <Routes>
-        <Route path="/" element={<ProductList selectedCategory={selectedCategory} />} />
+        <Route path="/" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
@@ -79,7 +94,8 @@ const AppWrapper = () => {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/search" element={<Search />} />
         <Route path="/filter" element={<FilterPage />} /> {/* Add FilterPage route */}
-
+        <Route path="/all-products" element={<AllProductsList />} /> {/* Route for AllProductsList */}
+        
         <Route path="/settings" element={<PrivateRoute allowedRoles={['admin', 'user']}><Settings /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute allowedRoles={['admin', 'user']}><Profile /></PrivateRoute>} />
         <Route path="/admin/*" element={<PrivateRoute allowedRoles={['admin']}><AdminDashboard /></PrivateRoute>} />
@@ -104,6 +120,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

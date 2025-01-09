@@ -80,3 +80,17 @@ footer {
     grid-area: main;
   }
 }
+
+/* Styles to hide elements on screens wider than 768px */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Styles to show content only on mobile screens */
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none;
+  }
+}

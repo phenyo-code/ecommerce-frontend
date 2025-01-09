@@ -1,10 +1,10 @@
-.search-header {
+.all-header {
     display: flex;
     align-items: center;
     gap: 0;  /* Removed gap for no space between elements */
     background-color: #f8f8f8; /* Light background */
     border-bottom: 1px solid #ddd;  /* Added bottom border */
-    position: fixed;  /* Fixed position at the top */
+    position: absolute;  /* Fixed position at the top */
     padding: 0; /* Removed padding to reduce space */
     top: 0;  /* Position at the very top */
     left: 0;  /* Align to the left edge of the viewport */
@@ -36,7 +36,7 @@
     background-color: #f8f8f8; /* Light background */
   }
   
-  .search-input {
+  .search-bar {
     width: 100%;
     font-size: 14px;
     color: #333;
@@ -71,6 +71,8 @@
     border-radius: 50%;  /* Round background for the search icon */
     display: flex;
     align-items: center;
+    position: absolute;
+    right: 2px;
     justify-content: center;
     width: 25px;  /* Set width to create a consistent size */
     height: 17px;  /* Set height to make it a perfect circle */

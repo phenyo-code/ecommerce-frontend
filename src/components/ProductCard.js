@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart, FiHeart } from 'react-icons/fi';
 import './ProductCard.css';
 
-function ProductCard({ product }) {
+function ProductCard({ product, searchQuery }) {
   const [showAnimation, setShowAnimation] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false); // Track if the product is in the wishlist
 
   const calculateDiscount = () => {
     if (product.originalPrice && product.price) {
@@ -13,22 +14,24 @@ function ProductCard({ product }) {
     return 0;
   };
 
-  const addToCart = (event) => {
-    // Prevent navigation when clicking the cart button
+  const addToWishlist = (event) => {
+    // Prevent navigation when clicking the heart button
     event.preventDefault();
     event.stopPropagation();
 
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    let existingProduct = existingCart.find((item) => item.id === product.id);
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const isProductInWishlist = wishlist.some(item => item.id === product.id);
 
-    if (existingProduct) {
-      existingProduct.quantity += 1;
+    if (!isProductInWishlist) {
+      wishlist.push(product);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      setIsInWishlist(true); // Set the product as added to wishlist
     } else {
-      existingProduct = { ...product, quantity: 1 };
-      existingCart.push(existingProduct);
+      // Remove from wishlist if already in
+      const updatedWishlist = wishlist.filter(item => item.id !== product.id);
+      localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+      setIsInWishlist(false); // Set the product as removed from wishlist
     }
-
-    localStorage.setItem('cart', JSON.stringify(existingCart));
 
     // Trigger the animation
     setShowAnimation(true);
@@ -37,18 +40,23 @@ function ProductCard({ product }) {
 
   const discount = calculateDiscount();
 
-  return (
+  // Filter product based on search query
+  const isProductVisible = searchQuery
+    ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    : true;
+
+  return isProductVisible ? (
     <Link to={`/product/${product.id}`} className="product-card">
       <div className="product-image-wrapper">
         <img src={product.image} alt={product.name} className="product-image" />
         <div
           className="discount-badge"
           onClick={(e) => {
-            e.preventDefault(); // Prevent navigation for the cart button
+            e.preventDefault(); // Prevent navigation for the heart button
             e.stopPropagation();
           }}
         >
-          <FiShoppingCart onClick={addToCart} className="cart-button" />
+          <FiHeart onClick={addToWishlist} className="cart-button" />
         </div>
         {showAnimation && <div className="cart-animation"></div>}
       </div>
@@ -67,10 +75,12 @@ function ProductCard({ product }) {
         </div>
       </div>
     </Link>
-  );
+  ) : null;
 }
 
 export default ProductCard;
+
+
 
 
 

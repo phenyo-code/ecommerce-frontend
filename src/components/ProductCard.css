@@ -80,10 +80,10 @@
 }
 
 .cart-button {
-  font-size: 18px;
+  font-size: 16px;
   color: #ff6600;
   border: none;
-  padding: 4px;
+  padding: 3px;
   cursor: pointer;
   margin-top: 0;
   margin-bottom: 0;
@@ -92,15 +92,18 @@
 
 
 .product-details-name {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #000000;
   text-decoration: none;
+  font-weight: 500;
   margin: 0;
   left: 0;
   white-space: nowrap; /* Prevents text from wrapping */
   overflow: hidden;    /* Hides any overflowing text */
   text-overflow: ellipsis; /* Adds '...' at the end if text overflows */
   width: 100%; /* Ensures the element takes up available space */
+  margin-bottom: 0;
+  padding: 0;
 }
 
 

@@ -10,6 +10,7 @@ export const useProducts = () => {
 // ProductProvider component to provide the product data
 const ProductProvider = ({ children }) => {
   const initialProducts = [
+
         // Men Products
         { 
           id: 1, 
@@ -269,80 +270,87 @@ const ProductProvider = ({ children }) => {
       
   
 
-
-  const [products, setProducts] = useState(initialProducts); // Store products in state
-  const [activeCategory, setActiveCategory] = useState('men'); // Active category state (default 'women')
-  const [activeFilterTabs, setActiveFilterTabs] = useState([]); // State for active filter tabs
-  const [isLoadingFilters, setIsLoadingFilters] = useState(false); // Flag to handle loading state
-  const [filter, setFilter] = useState(''); // Added state for filter
-
-  // Memoized category-specific filters
-  const categoryFilters = useMemo(
-    () => ({
-      men: ['New', 'Sale', 'T-Shirts', 'Jeans', 'Jackets', 'Shoes'],
-      women: ['New', 'Sale', 'Dresses', 'Tops', 'Jeans', 'Jackets'],
-      brands: ['New', 'Sale', 'Nike', 'Adidas', 'Puma', 'Reebok'],
-      home: ['Furniture', 'New', 'Sale', 'Decor', 'Lighting', 'Kitchen'],
-      jewellery: ['Necklaces', 'Bracelets', 'New', 'Sale', 'Rings', 'Earrings'],
-    }),
-    []
-  );
-
-  const addProduct = (product) => {
-    setProducts((prevProducts) => [...prevProducts, product]);
-  };
-
-  const deleteProduct = (id) => {
-    setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
-  };
-
-  const changeCategory = (category) => {
-    setActiveCategory(category.toLowerCase());
-    setIsLoadingFilters(true); // Trigger loading state when switching tabs
-  };
-
-  // Filter products based on both category and selected filter
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const isCategoryMatch = activeCategory === 'all' || product.category === activeCategory;
-      const isFilterMatch = activeFilterTabs.length === 0 || activeFilterTabs.includes(product.filter);
-
-      return isCategoryMatch && isFilterMatch;
-    });
-  }, [activeCategory, activeFilterTabs, products]);
-
-  useEffect(() => {
-    if (categoryFilters[activeCategory]) {
-      setActiveFilterTabs(categoryFilters[activeCategory]); // Update the filters for the active category
-    } else {
-      setActiveFilterTabs([]); // Reset to empty filters if no filters are defined
-    }
-
-    setIsLoadingFilters(false);
-  }, [activeCategory, categoryFilters]);
-
-  return (
-    <ProductContext.Provider
-      value={{
-        products: filteredProducts, // Only pass the filtered products
-        addProduct,
-        deleteProduct,
-        changeCategory, // Expose the category change function
-        activeCategory, // Expose the activeCategory for use in other components
-        activeFilterTabs, // Expose active filter tabs for use in components
-        setActiveFilterTabs, // Explicitly expose setActiveFilterTabs to the context
-        isLoadingFilters, // Pass loading state to the context
-        filter, // Pass the filter state
-        setFilter, // Pass the setFilter function to allow filter changes
-      }}
-    >
-      {children}
-    </ProductContext.Provider>
-  );
-};
-
-export default ProductProvider;
-
+        const [products, setProducts] = useState(initialProducts); // Store products in state
+        const [activeCategory, setActiveCategory] = useState('men'); // Active category state (default 'women')
+        const [activeFilterTabs, setActiveFilterTabs] = useState([]); // State for active filter tabs
+        const [isLoadingFilters, setIsLoadingFilters] = useState(false); // Flag to handle loading state
+        const [filter, setFilter] = useState(''); // Added state for filter
+        const [searchQuery, setSearchQuery] = useState(''); // State for search functionality
+      
+        // Memoized category-specific filters
+        const categoryFilters = useMemo(
+          () => ({
+            men: ['New', 'Sale', 'T-Shirts', 'Jeans', 'Jackets', 'Shoes'],
+            women: ['New', 'Sale', 'Dresses', 'Tops', 'Jeans', 'Jackets'],
+            brands: ['New', 'Sale', 'Nike', 'Adidas', 'Puma', 'Reebok'],
+            home: ['Furniture', 'New', 'Sale', 'Decor', 'Lighting', 'Kitchen'],
+            jewellery: ['Necklaces', 'Bracelets', 'New', 'Sale', 'Rings', 'Earrings'],
+          }),
+          []
+        );
+      
+        const addProduct = (product) => {
+          setProducts((prevProducts) => [...prevProducts, product]);
+        };
+      
+        const deleteProduct = (id) => {
+          setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+        };
+      
+        const changeCategory = (category) => {
+          setActiveCategory(category.toLowerCase());
+          setIsLoadingFilters(true); // Trigger loading state when switching tabs
+        };
+      
+        // Filter products based on category and active filters
+        const filteredProducts = useMemo(() => {
+          return products.filter((product) => {
+            const isCategoryMatch = activeCategory === 'all' || product.category === activeCategory;
+            const isFilterMatch = activeFilterTabs.length === 0 || activeFilterTabs.includes(product.filter);
+            return isCategoryMatch && isFilterMatch;
+          });
+        }, [activeCategory, activeFilterTabs, products]);
+      
+        // Get all products without any filtering applied
+        const allProducts = useMemo(() => {
+          return products; // Simply return all products without applying any filters
+        }, [products]);
+      
+        useEffect(() => {
+          if (categoryFilters[activeCategory]) {
+            setActiveFilterTabs(categoryFilters[activeCategory]); // Update the filters for the active category
+          } else {
+            setActiveFilterTabs([]); // Reset to empty filters if no filters are defined
+          }
+      
+          setIsLoadingFilters(false);
+        }, [activeCategory, categoryFilters]);
+      
+        return (
+          <ProductContext.Provider
+            value={{
+              products: filteredProducts, // Pass the filtered products
+              allProducts,              // Pass all products (no filtering)
+              addProduct,
+              deleteProduct,
+              changeCategory,           // Expose the category change function
+              activeCategory,           // Expose the activeCategory for use in other components
+              activeFilterTabs,         // Expose active filter tabs for use in components
+              setActiveFilterTabs,      // Explicitly expose setActiveFilterTabs to the context
+              isLoadingFilters,         // Pass loading state to the context
+              filter,                   // Pass the filter state
+              setFilter,                // Pass the setFilter function to allow filter changes
+              searchQuery,              // Pass the search query state
+              setSearchQuery,           // Pass the setSearchQuery function for search updates
+            }}
+          >
+            {children}
+          </ProductContext.Provider>
+        );
+      };
+      
+      export default ProductProvider;
+      
 
 
 
